@@ -15,6 +15,7 @@
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
 
@@ -24,6 +25,13 @@
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->descripcion}}</td>
+                        <td>
+                            <div class="">
+                            <a href="{{route('editform', $user->id)}}"  class="btn btn-primary mb-3">
+                                <i class=" fas fa-pencil-alt"></i>
+                            </a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
 

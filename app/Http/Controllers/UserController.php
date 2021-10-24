@@ -44,5 +44,23 @@ class UserController extends Controller
         ]);
 
         return back()->with('usuarioGuardado','Usuario Guardado');
-}
+    }
+
+     //Formulario Editar usuarios
+     public function editform($id){
+        $rol=Rol::all();
+        $usuario = Usuario::findOrfail($id);
+        return view ('usuarios.editform', compact('usuario', 'rol'));
+
+    }
+
+    //Editar usuarios
+    public function edit(Request $request,$id)
+    {
+
+        $dataUsuario = request()->except ((['_token','_method']));
+        Usuario::where('id', '=', $id)->update($dataUsuario);
+
+        return back()->with('usuarioModificado', 'Usuario Modificado');
+    }
 }

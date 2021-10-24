@@ -20,3 +20,7 @@ Route::get('/','UserController@list');
 Route::get('/form','UserController@userform');
 
 Route::post('/save','UserController@save')->name('save');
+
+Route::get('/editform/{id}', 'userController@editform')->name('editform');
+
+Route::patch('/edit/{id}', 'userController@edit')->name('edit');
