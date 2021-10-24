@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.base');
+    return view('usuarios.list');
 });
+
+Route::get('/form','UserController@userform');
+Route::post('/save','UserController@save')->name('save');
