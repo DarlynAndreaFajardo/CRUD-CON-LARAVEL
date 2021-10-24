@@ -55,12 +55,17 @@ class UserController extends Controller
     }
 
     //Editar usuarios
-    public function edit(Request $request,$id)
-    {
+    public function edit(Request $request,$id){
 
         $dataUsuario = request()->except ((['_token','_method']));
         Usuario::where('id', '=', $id)->update($dataUsuario);
 
         return back()->with('usuarioModificado', 'Usuario Modificado');
+    }
+
+    //Eliminar usuario
+    public function delete($id){
+        Usuario::destroy($id);
+        return back()->with('usuarioEliminado', 'Usuario Eliminado');
     }
 }

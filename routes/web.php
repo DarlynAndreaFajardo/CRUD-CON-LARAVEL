@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* RUTAS */ 
 
-
+//Listado
 Route::get('/','UserController@list');
-
+//Formulario Usuario
 Route::get('/form','UserController@userform');
-
+//Guardar Usuario
 Route::post('/save','UserController@save')->name('save');
-
+//Edicion de Usuario
 Route::get('/editform/{id}', 'userController@editform')->name('editform');
-
+//Editar usuario
 Route::patch('/edit/{id}', 'userController@edit')->name('edit');
+//Eliminar Usuario
+Route::delete('/delete/{id}', 'UserController@delete')->name ('delete');
