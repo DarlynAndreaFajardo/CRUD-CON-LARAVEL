@@ -6,6 +6,7 @@ use App\Models\Rol;
 use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -35,11 +36,16 @@ class UserController extends Controller
         $validator = $this->validate($request, [
             'nombre'=> 'required|string|max:100',
             'email'=> 'required|string|max:100|email|unique:usuarios',
+            'foto'=> 'required',
             'rol'=> 'required'
         ]);
+        if($request ->hasfile('foto')){
+            $validator ['foto']=$request->file('foto')->store('imagenes', 'public');
+        }
         Usuario::create([
             'nombre'=>$validator['nombre'],
             'email'=>$validator['email'],
+            'foto'=>$validator['foto'],
             'rol_id'=>$validator['rol']
         ]);
 
@@ -58,6 +64,11 @@ class UserController extends Controller
     public function edit(Request $request,$id){
 
         $dataUsuario = request()->except ((['_token','_method']));
+        if($request ->hasfile('foto')){
+            $usuario = Usuario::findOrFail($id);
+            Storage::delete('public/'.$usuario->foto);
+            $dataUsuario['foto']=$request->file('foto')->store('imagenes', 'public');
+        }
         Usuario::where('id', '=', $id)->update($dataUsuario);
 
         return back()->with('usuarioModificado', 'Usuario Modificado');

@@ -25,8 +25,10 @@
 
 
             <div class="card">
-                <form action="{{route('edit',$usuario->id)}}" method="POST">
-                    @csrf @method('PATCH')
+                <form action="{{route('edit',$usuario->id)}}" method="POST"enctype="multipart/form-data" >
+                {{csrf_field()}}
+                    {{method_field('PATCH')}}
+                    
 
                     <div class="card-header text-center">MODIFICAR USUARIO</div>
 
@@ -41,6 +43,15 @@
                             <input type="text" name="email" class="form-control col-md-9" value="{{$usuario->email}}">
                         </div>
 
+                        <div class="row form-group">
+                            <label for="" class="col-2">Fotografìa:</label>
+                            <td> <img src="{{ asset('storage').'/'.$usuario->foto}}" alt="" height="100"></td>
+
+                            <div class="custom-file col-5">
+                                <input type="file" name="foto" class="custom-file-input "  >
+                                <label class="custom-file-label" for="inputGroupFile04"style="color:limegreen">Cargar Foto</label>
+                            </div>
+                            </div>
                         <div class="row form-group">
                             <label for="" class="col-2">Rol:</label>
                             <select name="rol_id" class="form-control col-md-9" >

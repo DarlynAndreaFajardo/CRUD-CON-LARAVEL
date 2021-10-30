@@ -10,10 +10,13 @@
             <a class="btn btn-success mb-1" href="{{url('/form')}}">Agregar usuario</a>
 
             <table class="table table-bordered table-striped text-center">
+            <table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="white">
+            
                 <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
+                    <th>Fotografia</th>
                     <th>Rol</th>
                     <th>Acciones</th>
                 </tr>
@@ -24,6 +27,7 @@
                     <tr>
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>
+                        <td> <img src="{{ asset('storage').'/'.$user->foto}}" alt="" height="100"></td>
                         <td>{{$user->descripcion}}</td>
                         <td>
                             <div class="btn-group">
