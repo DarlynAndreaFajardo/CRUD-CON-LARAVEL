@@ -7,12 +7,12 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h2 class="text-center mb-1">Usuarios Registrados</h2>
-            <a class="btn btn-success mb-1" href="{{url('/form')}}">Agregar usuario</a>
+            <a class="btn btn-success mb-1" href="{{url('/form')}}"style="background-color:#c56280">Agregar usuario</a>
 
             <table class="table table-bordered table-striped text-center">
-            <table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="white">
+            <table border="1" cellpadding="0" cellspacing="0" width="100%" bgcolor="lightpink">
             
-                <thead>
+                <thead style="background-color:#c56280">
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
